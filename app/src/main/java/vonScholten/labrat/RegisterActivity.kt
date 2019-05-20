@@ -10,6 +10,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
@@ -67,10 +68,10 @@ class RegisterActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener //if unsuccessful
-                else {
-                    Log.d("RegisterActivity", "Successfully created user with uid: ${it.result!!.user.uid}")
-                    uploadImageToFirebaseStorage()
-                }
+
+                Log.d("RegisterActivity", "Successfully created user with uid: ${it.result!!.user.uid}")
+                uploadImageToFirebaseStorage()
+
             }
             .addOnFailureListener{
                 Log.d("RegisterActivity", "Failed to create user: ${it.message}")
@@ -87,7 +88,31 @@ class RegisterActivity : AppCompatActivity() {
         ref.putFile(uri!!)
             .addOnSuccessListener {
                 Log.d("RegisterActivity", "Successfully uploaded image: ${it.metadata?.path}")
+                saveUserToFirebaseDatabase(it.toString())
             }
+
     }
+
+    private fun saveUserToFirebaseDatabase(profileImageUrl: String) {
+        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val username = register_editName.text.toString()
+
+        val ref = FirebaseDatabase.getInstance().getReference("users/$uid")
+
+        val user = User(uid, username, profileImageUrl)
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d("RegisterActivity", "Saved user to database.")
+            }
+            .addOnFailureListener {
+                Log.d("RegisterActivity", "Failed to save user to database: ${it.message}")
+            }
+
+    }
+
+    class User(
+        val uid : String,
+        val username : String,
+        val profileImageUrl : String)
 
 }
