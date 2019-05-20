@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
 
         register_button.setOnClickListener {
             val email = register_editEmail.text.toString() //extract email address
-            Log.d("MainActivity", "email: $email")
+            Log.d("MainActivity", "email -> $email")
 
             val password = register_editPassword.text.toString() //extract password
-            Log.d("MainActivity", "password: $password")
+            Log.d("MainActivity", "password -> $password")
         }
 
         already_have_account_textView.setOnClickListener {
