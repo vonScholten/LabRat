@@ -13,24 +13,20 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/login_editEmail"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="@string/email"/>
+            android:hint="@string/email" android:layout_marginTop="240dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/login_editPassword"
-            android:layout_marginTop="8dp"
+            android:hint="@string/password" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/login_editEmail"
-            app:layout_constraintEnd_toEndOf="@+id/login_editEmail"
             app:layout_constraintStart_toStartOf="@+id/login_editEmail"
-            android:hint="@string/password"/>
+            app:layout_constraintEnd_toEndOf="@+id/login_editEmail"/>
     <Button
             android:text="Login"
             android:layout_width="wrap_content"
@@ -38,8 +34,8 @@
             android:id="@+id/login_button"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/login_editPassword"
-            app:layout_constraintEnd_toEndOf="@+id/login_editPassword"
-            app:layout_constraintStart_toStartOf="@+id/login_editPassword"/>
+            app:layout_constraintStart_toStartOf="@+id/login_editPassword"
+            app:layout_constraintEnd_toEndOf="@+id/login_editPassword"/>
     <TextView
             android:text="Don't have an account"
             android:layout_width="wrap_content"
@@ -47,6 +43,6 @@
             android:id="@+id/dont_have_an_account_textView"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/login_button"
-            app:layout_constraintEnd_toEndOf="@+id/login_button"
-            app:layout_constraintStart_toStartOf="@+id/login_button"/>
+            app:layout_constraintStart_toStartOf="@+id/login_button"
+            app:layout_constraintEnd_toEndOf="@+id/login_button"/>
 </android.support.constraint.ConstraintLayout>
