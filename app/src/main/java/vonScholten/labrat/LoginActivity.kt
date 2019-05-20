@@ -36,11 +36,11 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener {
                 if(!it.isSuccessful) return@addOnCompleteListener //if unsuccessful
                 else {
-                    Log.d("MainActivity", "Successfully signed in user with uid: ${it.result!!.user.uid}")
+                    Log.d("RegisterActivity", "Successfully signed in user with uid: ${it.result!!.user.uid}")
                 }
             }
             .addOnFailureListener {
-                Log.d("MainActivity", "Authentication failed: ${it.message}")
+                Log.d("RegisterActivity", "Authentication failed: ${it.message}")
                 Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
             }
     }

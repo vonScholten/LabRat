@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
                 super.run()
                 try { //try to sleep and then launch
                     sleep(5000) //sleep for 5000 ms
-                    val intent = Intent(baseContext, MainActivity::class.java)
+                    val intent = Intent(baseContext, RegisterActivity::class.java)
                     startActivity(intent)
                 }
                 catch (e: Exception){
